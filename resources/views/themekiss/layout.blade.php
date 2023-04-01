@@ -13,7 +13,7 @@
                     $data[] = [
                         'label' => $label,
                         'template' => $template,
-                        'data' => \Ophim\Core\Models\Movie::when($relation, function ($query) use ($relation, $field, $val) {
+                        'data' => \Ophim\Core\Models\Movie::with('categories')->when($relation, function ($query) use ($relation, $field, $val) {
                             $query->whereHas($relation, function ($rel) use ($field, $val) {
                                 $rel->where($field, $val);
                             });
